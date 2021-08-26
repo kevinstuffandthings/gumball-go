@@ -17,7 +17,7 @@ func expensiveOperation() (int, error) {
 }
 ```
 
-We set up a new dispenser for that operation. These dispensers are best saved as class variables, so the dispenser itself is a singleton.
+We set up a new dispenser for that operation, and initialize it with a TTL and refresh function:
 
 ```go
 dispenser = gumball.NewDispenser(300*time.Second, func() (gumball.Gumball, error) {
