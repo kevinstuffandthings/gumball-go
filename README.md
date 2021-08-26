@@ -47,21 +47,57 @@ import (
 
 func expensiveOperation() (int, error) {
 	rand.Seed(time.Now().UnixNano())
-	time.Sleep(5 * time.Second)
+	time.Sleep(3 * time.Second)
 	return rand.Intn(100), nil
 }
 
 func main() {
-	dispenser := gumball.NewDispenser(30*time.Second, func() (gumball.Gumball, error) {
+	dispenser := gumball.NewDispenser(5*time.Second, func() (gumball.Gumball, error) {
 		return expensiveOperation()
 	})
 
+	iterations := 20
 	ticker := time.NewTicker(1 * time.Second)
 	for {
+		<-ticker.C
 		gb, _ := dispenser.Dispense() // of course you should check this...
 		value, _ := gb.(int)          // ...and this!
-		fmt.Println("Got value from gumball:", value)
-		<-ticker.C
+		fmt.Printf("%v: got value from gumball: %d\n", time.Now().Format("15:04:05"), value)
+
+		iterations--
+		if iterations == 0 {
+			break
+		}
 	}
 }
+```
+
+#### Output
+```
+Cache invalid. ttl=5s, expiration=0001-01-01 00:00:00 +0000 UTC... refreshing!
+18:33:07: got value from gumball: 90
+18:33:07: got value from gumball: 90
+18:33:08: got value from gumball: 90
+18:33:09: got value from gumball: 90
+Cache invalid. ttl=5s, expiration=2021-08-26 18:33:09.921185 -0400 EDT m=+6.005250071... refreshing!
+18:33:13: got value from gumball: 42
+18:33:13: got value from gumball: 42
+18:33:14: got value from gumball: 42
+18:33:15: got value from gumball: 42
+Cache invalid. ttl=5s, expiration=2021-08-26 18:33:15.921125 -0400 EDT m=+12.005217875... refreshing!
+18:33:19: got value from gumball: 41
+18:33:19: got value from gumball: 41
+18:33:20: got value from gumball: 41
+18:33:21: got value from gumball: 41
+Cache invalid. ttl=5s, expiration=2021-08-26 18:33:21.921112 -0400 EDT m=+18.005232767... refreshing!
+18:33:25: got value from gumball: 98
+18:33:25: got value from gumball: 98
+18:33:26: got value from gumball: 98
+Cache invalid. ttl=5s, expiration=2021-08-26 18:33:27.916175 -0400 EDT m=+24.000322463... refreshing!
+18:33:30: got value from gumball: 7
+18:33:30: got value from gumball: 7
+18:33:31: got value from gumball: 7
+18:33:32: got value from gumball: 7
+Cache invalid. ttl=5s, expiration=2021-08-26 18:33:32.921068 -0400 EDT m=+29.005238501... refreshing!
+18:33:36: got value from gumball: 73
 ```
