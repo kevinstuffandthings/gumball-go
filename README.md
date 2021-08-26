@@ -32,3 +32,36 @@ fmt.Println("Value is", value)
 
 Subsequent calls to `dispenser.Dispense()` within the specified TTL will return the same value, immediately.
 Once the TTL has come and gone, the next call will kick off our `expensiveOperation`.
+
+## Example
+```go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+
+	"github.com/kevinstuffandthings/gumball-go"
+)
+
+func expensiveOperation() (int, error) {
+	rand.Seed(time.Now().UnixNano())
+	time.Sleep(5 * time.Second)
+	return rand.Intn(100), nil
+}
+
+func main() {
+	dispenser := gumball.NewDispenser(30*time.Second, func() (gumball.Gumball, error) {
+		return expensiveOperation()
+	})
+
+	ticker := time.NewTicker(1 * time.Second)
+	for {
+		gb, _ := dispenser.Dispense() // of course you should check this...
+		value, _ := gb.(int)          // ...and this!
+		fmt.Println("Got value from gumball:", value)
+		<-ticker.C
+	}
+}
+```
