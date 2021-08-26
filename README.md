@@ -2,6 +2,9 @@
 
 A Go translation of the Ruby [Gumball](https://github.com/kevinstuffandthings/gumball) gem.
 
+_I wrote this as a way to learn Go. Both my learning and this package are a work-in-progress. Please be extremely careful if you consider
+using (or even looking) at this code!_
+
 ## Usage
 Let's say we have some expensive operation we need to utilize the value of. We need to refresh it occasionally, but if we sometimes get a
 slightly-stale copy, that's ok.
@@ -29,7 +32,3 @@ fmt.Println("Value is", value)
 
 Subsequent calls to `dispenser.Dispense()` within the specified TTL will return the same value, immediately.
 Once the TTL has come and gone, the next call will kick off our `expensiveOperation`.
-
-# Problems?
-Please submit an [issue](https://github.com/kevinstuffandthings/gumball-go/issues).
-We'll figure out how to get you up and running with Gumball as smoothly as possible.
