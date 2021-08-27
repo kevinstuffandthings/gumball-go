@@ -42,7 +42,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/kevinstuffandthings/gumball-go"
+	gumball "github.com/kevinstuffandthings/gumball-go"
 )
 
 func expensiveOperation() (int, error) {
