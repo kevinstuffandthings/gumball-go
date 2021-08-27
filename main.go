@@ -30,7 +30,7 @@ func (d *Dispenser) Dispense() (Gumball, error) {
 
 	now := time.Now()
 	if now.After(d.expiration) {
-		fmt.Printf("Cache invalid. ttl=%v, expiration=%v... refreshing!\n", d.ttl, d.expiration)
+		fmt.Printf("Cache invalid. ttl=%v, expiration=%v... refreshing!\n", d.ttl, d.expiration.Format(time.Stamp))
 		var err error
 		d.item, err = d.refreshFunc()
 		if err != nil {

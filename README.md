@@ -74,30 +74,30 @@ func main() {
 
 #### Output
 ```
-Cache invalid. ttl=5s, expiration=0001-01-01 00:00:00 +0000 UTC... refreshing!
-18:33:07: got value from gumball: 90
-18:33:07: got value from gumball: 90
-18:33:08: got value from gumball: 90
-18:33:09: got value from gumball: 90
-Cache invalid. ttl=5s, expiration=2021-08-26 18:33:09.921185 -0400 EDT m=+6.005250071... refreshing!
-18:33:13: got value from gumball: 42
-18:33:13: got value from gumball: 42
-18:33:14: got value from gumball: 42
-18:33:15: got value from gumball: 42
-Cache invalid. ttl=5s, expiration=2021-08-26 18:33:15.921125 -0400 EDT m=+12.005217875... refreshing!
-18:33:19: got value from gumball: 41
-18:33:19: got value from gumball: 41
-18:33:20: got value from gumball: 41
-18:33:21: got value from gumball: 41
-Cache invalid. ttl=5s, expiration=2021-08-26 18:33:21.921112 -0400 EDT m=+18.005232767... refreshing!
-18:33:25: got value from gumball: 98
-18:33:25: got value from gumball: 98
-18:33:26: got value from gumball: 98
-Cache invalid. ttl=5s, expiration=2021-08-26 18:33:27.916175 -0400 EDT m=+24.000322463... refreshing!
-18:33:30: got value from gumball: 7
-18:33:30: got value from gumball: 7
-18:33:31: got value from gumball: 7
-18:33:32: got value from gumball: 7
-Cache invalid. ttl=5s, expiration=2021-08-26 18:33:32.921068 -0400 EDT m=+29.005238501... refreshing!
-18:33:36: got value from gumball: 73
+Cache invalid. ttl=5s, expiration=Jan  1 00:00:00... refreshing!
+08:27:36: got value from gumball: 60
+08:27:36: got value from gumball: 60
+08:27:37: got value from gumball: 60
+Cache invalid. ttl=5s, expiration=Aug 27 08:27:38... refreshing!
+08:27:41: got value from gumball: 69
+08:27:41: got value from gumball: 69
+08:27:42: got value from gumball: 69
+08:27:43: got value from gumball: 69
+Cache invalid. ttl=5s, expiration=Aug 27 08:27:43... refreshing!
+08:27:47: got value from gumball: 8
+08:27:47: got value from gumball: 8
+08:27:48: got value from gumball: 8
+08:27:49: got value from gumball: 8
+Cache invalid. ttl=5s, expiration=Aug 27 08:27:49... refreshing!
+08:27:53: got value from gumball: 21
+08:27:53: got value from gumball: 21
+08:27:54: got value from gumball: 21
+08:27:55: got value from gumball: 21
+Cache invalid. ttl=5s, expiration=Aug 27 08:27:55... refreshing!
+08:27:59: got value from gumball: 34
+08:27:59: got value from gumball: 34
+08:28:00: got value from gumball: 34
+08:28:01: got value from gumball: 34
+Cache invalid. ttl=5s, expiration=Aug 27 08:28:01... refreshing!
+08:28:05: got value from gumball: 52
 ```
