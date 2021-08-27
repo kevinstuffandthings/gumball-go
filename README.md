@@ -38,37 +38,37 @@ Once the TTL has come and gone, the next call will kick off our `expensiveOperat
 package main
 
 import (
-	"fmt"
-	"math/rand"
-	"time"
+    "fmt"
+    "math/rand"
+    "time"
 
-	gumball "github.com/kevinstuffandthings/gumball-go"
+    gumball "github.com/kevinstuffandthings/gumball-go"
 )
 
 func expensiveOperation() (int, error) {
-	rand.Seed(time.Now().UnixNano())
-	time.Sleep(3 * time.Second)
-	return rand.Intn(100), nil
+    rand.Seed(time.Now().UnixNano())
+    time.Sleep(3 * time.Second)
+    return rand.Intn(100), nil
 }
 
 func main() {
-	dispenser := gumball.NewDispenser(5*time.Second, func() (gumball.Gumball, error) {
-		return expensiveOperation()
-	})
+    dispenser := gumball.NewDispenser(5*time.Second, func() (gumball.Gumball, error) {
+        return expensiveOperation()
+    })
 
-	iterations := 20
-	ticker := time.NewTicker(1 * time.Second)
-	for {
-		<-ticker.C
-		gb, _ := dispenser.Dispense() // of course you should check this...
-		value, _ := gb.(int)          // ...and this!
-		fmt.Printf("%v: got value from gumball: %d\n", time.Now().Format("15:04:05"), value)
+    iterations := 20
+    ticker := time.NewTicker(1 * time.Second)
+    for {
+        <-ticker.C
+        gb, _ := dispenser.Dispense() // of course you should check this...
+        value, _ := gb.(int)          // ...and this!
+        fmt.Printf("%v: got value from gumball: %d\n", time.Now().Format("15:04:05"), value)
 
-		iterations--
-		if iterations == 0 {
-			break
-		}
-	}
+        iterations--
+        if iterations == 0 {
+            break
+        }
+    }
 }
 ```
 
